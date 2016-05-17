@@ -1,0 +1,81 @@
+<html>
+<header>
+<meta charset="UTF-8">
+<title>Exercise2</title>
+<style type="text/css">
+.line {
+			height: 20px;
+			background-color: red;
+			float: left;
+			margin-right: 10px;
+  margin-left: 20px;
+		}
+</style>
+
+
+
+<script type="text/javascript">
+var html = "";
+var arr = [];
+var output;
+var listInput = "";
+var row = "";
+var number = 0;
+
+function add() {
+  name = prompt("Tên đồ thị bạn muốn hiển thị", '');
+  arr.push(name);
+  number++;
+  listInput += '<tr><td>' + name + '</td><td><input type="text" id = "dothi' + number + '" placeholder="Giá trị phần trăm">%<br></td></tr>';
+  var string =
+    '<h2>Nhập vào giá trị các trường </h2>' +
+    '<form>' +
+    '<table>' +
+    listInput +
+    '</table>' +
+    '<input type="button" value="Vẽ đồ thị" onclick="view()">' +
+    '<input type="button" value="Reset" onclick="resets()">' +
+    '</form>';
+  document.getElementById("list").innerHTML = string;
+}
+
+function view() {
+  
+ 
+  for (i = 0; i < arr.length; i++) {
+    var j = i + 1;
+    var id = "dothi" + j;
+    var temp = parseFloat(document.getElementById(id).value);
+    row += '<tr>' +
+      '<td>' + arr[i] + '</td>' +
+      '<td>' +
+      '<div  class="line" style = " border: 1px;  width: ' + temp + 'px;">' +
+      '</div>' +
+    
+      '<label>' + temp + '%</label>' +
+      '</td>' +
+      '</tr>';
+  }
+  html = '<h2>Hiển thị đồ thị</h2>' +
+    '<table>' +
+    row +
+    '</table>';
+ document.getElementById("viewgraph").innerHTML = html;
+    
+}
+function resets(){
+row="";
+  html = '<h2>Hiển thị đồ thị</h2>';
+  document.getElementById("viewgraph").innerHTML = html;
+}
+</script>
+</header>
+<body>
+<div> 
+  <button onclick= "add()" > Thêm đồ thị</button>
+  <div id= "list"></div> 
+  <div id="viewgraph" class="hienthi"></div>
+
+</div>
+</body>
+</html>

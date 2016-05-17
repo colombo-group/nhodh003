@@ -1,0 +1,62 @@
+<html>
+<header>
+<meta charset="UTF-8">
+<title>Exercise4</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+<style type="text/css">
+.container{
+  text-align: center;
+}
+.text{
+  height: 35px;
+  margin-bottom: 100px
+}
+button{
+  margin-left: 50px;
+  width: 100px;
+}
+</style>
+<script type="text/javascript">
+ var html="";
+$(document).ready(function(){
+  $("#draw").click(function(){
+var x= $("input").val();
+    var y = parseInt(x);
+    for (i=0; i<=y; i++){
+      for(j=i; j> i/2; j--){
+        var x =(j+1)%10;
+        html+= x + "  ";
+      }
+      for(j= Math.ceil(i/2); j<=i ; j++ ){
+        var x = (j+1)%10;
+        html+= x + " ";
+      }
+      html += "<br>" ;
+    } 
+    document.getElementById("view").innerHTML = html;
+    });
+  $("#resets").click(function(){
+    html="";
+    document.getElementById("view").innerHTML= html;
+  });
+
+});
+    
+
+  
+  
+
+
+</script>
+</header>
+<body>
+<div class="container">
+  <input type="text" class="text" id="text"><button id="draw" class="btn btn-primary">Vẽ tam giác</button><button id="resets" class="btn btn-danger">reset</button>
+  <div id="view" class="view"></div>
+</div>
+
+</body>
+</html>

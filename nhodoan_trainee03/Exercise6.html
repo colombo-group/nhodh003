@@ -1,0 +1,49 @@
+<html>
+<header>
+<meta charset="UTF-8">
+<title>Exercise4</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+<style type="text/css">
+input{
+  height: 30px;
+  width: 80px;
+}
+button{
+  width: 40px;
+  height: 30px;
+}
+.container{
+  margin-top: 50px;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("button").click(function() {
+    var temp = $(this).attr("value");
+    var num1 = document.getElementById("number1").value;
+    var num2 = document.getElementById("number2").value;
+    var exp = num1 + ' ' +temp + num2;
+    var answer= eval(exp);
+    $(".answer").val(answer);
+
+  });
+});
+
+</script>
+</header>
+<body>
+<div class=" container" >
+  <input type=text id="number1"/>
+  <button id="+" value="+">+</button>
+  <button id="-" value="-">-</button>
+  <button id="*" value="*">*</button>
+  <button id="/" value="/">/</button>
+  <input type="text" id="number2"/> =
+  <input type="text" id="answer" class="answer" readonly>
+</div>
+
+</body>
+</html>

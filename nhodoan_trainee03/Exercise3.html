@@ -1,0 +1,114 @@
+<html>
+<header>
+<meta charset="UTF-8">
+<title>Exercise3</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<style type="text/css">
+
+
+body{
+  background-color: white;
+  text-align: center;
+}
+.container{
+  background-color: #f2f2f2;
+  text-align: center;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  padding-top: 50px;
+}
+h1{
+  color: #666666;
+  margin-bottom: 40px;
+}
+#view{
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+#minute, #second, #miniSecond{
+  font-size: 40px;
+  margin: 20px 20px 20px 20px ;
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+</header>
+<body>
+<script type="text/javascript">
+var minuteD1 =0;
+var minuteD2 =0;
+var secondD1 =0;
+var secondD2 =0;
+var miniSecond = 0;
+var timeInProcess=false;
+var watch;
+$(document).ready(function() {
+  showTime();
+});
+function start(){
+  if(timeInProcess){ 
+    timeInProcess=false;
+    clearInterval(watch);
+    $("#starts").html("Start");
+  }
+  else{
+    timeInProcess= true;
+    $("#starts").html("Stop");
+    watch= setInterval(function(){
+      
+      if(miniSecond<99){
+        miniSecond++;
+      }
+      else{
+        miniSecond=0;
+        if(secondD2<9) secondD2++;
+        else{
+          secondD2=0;
+          if(secondD1<5) secondD1++;
+          else{
+            secondD1=0;
+            if(minuteD2<9) minuteD2++;
+            else{
+              minuteD2 =0 ;
+              if(minuteD1<5) minuteD1++;
+              else minuteD1=0;
+            }
+          }
+        }
+      }
+      
+     showTime(); 
+      
+    },100 )
+  }
+};
+  function showTime(){
+  $('#minute').html(minuteD1+""+minuteD2);
+  $('#second').html(secondD1+""+secondD2);
+ $("#miniSecond").html(miniSecond);
+}
+function resets (){
+  minuteD1 = 0;
+ minuteD2 = 0;
+  secondD1 = 0;
+  secondD2 = 0;
+ miniSecond = 0;
+  showTime();
+  
+}
+</script>
+<div class="container">
+  <h1> <i> <b>Đồng hồ đếm giờ   </b></i> </h1>
+
+ <div class="well" style="background-color: #00ffff "> <h1 id="view"> <span id="minute"></span>: <span id="second"></span>.<span id="miniSecond"></span></h1>
+   </div>
+  <div>
+     <button id="starts" class="btn btn-info" onclick = start()>Start</button>
+    <button id="resets" class="btn btn-danger" onclick = resets()>Reset</button>
+  </div>
+</div> 
+</body>
+</html>
